@@ -1,10 +1,9 @@
--- This is the require files
 require "class"
 require "resources"
 require "player"
 require "world"
 require "debugstatus"
-require "camera" -- not using camera for now
+require "camera" 
 require "collision"
 require "timer"
 require "score"
@@ -18,6 +17,7 @@ PlayerCam = camera:new()
 DB = debugstatus:new(true)
 GameWorld = world:new()
 Hero = player:new(5, 100, -100)
+love.mouse.setVisible(false)
 end
 
 function love.update(dt)
@@ -27,10 +27,13 @@ function love.update(dt)
 end
 
 function love.draw()
+	local msx, msy = love.mouse.getPosition()
+	love.graphics.draw(spr_skyback_f1, 0, 0)
 	PlayerCam:set()
 	DB:draw()
 	Hero:draw()
 	PlayerCam:unset()
+	love.graphics.draw(spr_mcursor_f1, msx - spr_mcursor_f1:getWidth()/2, msy - spr_mcursor_f1:getHeight()/2)
 end
 
 function love.keypressed(key)

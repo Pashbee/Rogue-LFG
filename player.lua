@@ -8,7 +8,7 @@ function player:init( startXPos,startYPos,startYVel )
 	self.xvel = 0
 	self.width = 16
 	self.height = 48
-	self.walkSpeed = 100
+	self.walkSpeed = 200
 	self.friction = 4.5 --4.5
 	self.jumpHeight = 200
 	self.jump = false
