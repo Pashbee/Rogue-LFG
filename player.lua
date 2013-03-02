@@ -6,8 +6,8 @@ function player:init( startXPos,startYPos,startYVel )
 	self.y = startYPos
 	self.yvel = startYVel
 	self.xvel = 0
-	self.width = 16
-	self.height = 48
+	self.width = 28
+	self.height = 56
 	self.walkSpeed = 200
 	self.friction = 4.5 --4.5
 	self.jumpHeight = 200
@@ -20,7 +20,8 @@ function player:update()
 end
 
 function player:draw()
-	love.graphics.rectangle( "fill",self.x,self.y,self.width,self.height )
+	--love.graphics.rectangle( "fill",self.x,self.y,self.width,self.height )
+	love.graphics.draw(spr_rogue,self.x,self.y)
 end
 
 function player:CollidingBlock()
