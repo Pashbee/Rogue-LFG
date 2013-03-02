@@ -2,9 +2,10 @@
 world = class:new()
 
 function world:init()
-	self.gravityValue = 40 -- Will more than likely change this value soon 40 def
+	self.gravityValue = 475 -- Will more than likely change this value soon 40 def
 	self.worldWidth = love.graphics.getWidth()
 	self.worldHeight = love.graphics.getHeight()
+	self.baseHeightConstant = love.graphics.getHeight() - 200
 	-- for now when the world is spawned the background color is blueish!
 	love.graphics.setBackgroundColor(54, 172, 248)
 end
@@ -14,7 +15,7 @@ function world:GetGravityValue()
 	return self.gravityValue
 end
 
-function world:SetGravityValue(grav) -- This is better....if I ever have to change Gravity Values.
+function world:SetGravityValue(grav) 
 	-- body
 end
 

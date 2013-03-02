@@ -48,8 +48,8 @@ end
 
 function camera:follow(target)
 	
-	if target.x + target.vpw/2 > love.graphics.getWidth() / 2 then 
-		self.x = target.x + target.vpw/2 - love.graphics.getWidth() / 2
+	if target.x + target.width/2 > love.graphics.getWidth() / 2 then 
+		self.x = math.floor(target.x + target.width/2 - love.graphics.getWidth() / 2)
 	else
 		self.x = 0
 	end	
