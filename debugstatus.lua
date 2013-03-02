@@ -7,15 +7,25 @@ end
 
 function debugstatus:draw()
 	local msx, msy = love.mouse.getPosition( )
-	if self.active then 
-		love.graphics.setFont( fnt_default_1 )
-		love.graphics.print("Current FPS: "..tostring(love.timer.getFPS( )), 10, 10)
-		love.graphics.print("Mouse X POS: "..tostring(msx), 10, 25)
-		love.graphics.print("Mouse Y POS: "..tostring(msy), 10, 40)
-		love.graphics.print("Hero Can Shoot: "..tostring(Hero.canShoot), 10, 55)
-		love.graphics.print("Shot Count: "..tostring(Hero.shotCount), 10, 70)
-		love.graphics.print("Hero Shot Timer: "..tostring(HeroST.sec), 10, 85)
+	local xMin = math.floor(PlayerCam.x - GameWorld.blockSize / GameWorld.blockSize)
+	local xMax = math.floor(PlayerCam.x + love.graphics.getWidth() / GameWorld.blockSize)
+	local yMin = math.floor(PlayerCam.y - GameWorld.blockSize / GameWorld.blockSize)
+	local yMax = math.floor(PlayerCam.y + love.graphics.getHeight() / GameWorld.blockSize)
+
+	love.graphics.setColor(255, 255, 255)
+	if self.active then
+		love.graphics.print("Current FPS: "..tostring(love.timer.getFPS( )), PlayerCam.x + 10, PlayerCam.y + 10)
+		love.graphics.print("Mouse X POS: "..tostring(msx), PlayerCam.x + 10,PlayerCam.y + 25)
+		love.graphics.print("Mouse Y POS: "..tostring(msy), PlayerCam.x + 10,PlayerCam.y + 40)
+		love.graphics.print("No World Blocks: "..tostring(#WorldBlocks * #WorldBlocks), PlayerCam.x + 10,PlayerCam.y + 55)
+		love.graphics.print("XMin XMax: "..tostring(xMin), PlayerCam.x + 10,PlayerCam.y + 70)
+		love.graphics.print(","..tostring(xMax), PlayerCam.x + 110,PlayerCam.y + 70)
+		love.graphics.print("YMin YMax: "..tostring(yMin), PlayerCam.x + 10,PlayerCam.y + 85)
+		love.graphics.print(","..tostring(yMax), PlayerCam.x + 110,PlayerCam.y + 85)
+		love.graphics.print("PlayerCamX: "..tostring(PlayerCam.x), PlayerCam.x + 10,PlayerCam.y + 100)
+		love.graphics.print("PlayerCamY: "..tostring(PlayerCam.y), PlayerCam.x + 10,PlayerCam.y + 115)		
 	end
+	love.graphics.setColor(255,255,255)
 end
 
 function debugstatus:keypressed(key)
