@@ -8,7 +8,7 @@ require "collision"
 require "timer"
 require "score"
 require "floatingcombattext"
-
+require "platforms"
 
 
 
@@ -28,8 +28,8 @@ end
 
 function love.draw()
 	local msx, msy = love.mouse.getPosition()
-	love.graphics.draw(spr_skyback_f1, 0, 0)
 	PlayerCam:set()
+	--love.graphics.draw(spr_skyback_f1, PlayerCam.x, PlayerCam.y)
 	DB:draw()
 	Hero:draw()
 	PlayerCam:unset()
