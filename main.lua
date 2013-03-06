@@ -17,7 +17,13 @@ PlayerCam = camera:new()
 DB = debugstatus:new(true)
 GameWorld = world:new()
 Hero = player:new(5, 100, -100)
+LevelPlatforms = platforms:new()
 love.mouse.setVisible(false)
+
+-- spawn some test platforms
+
+LevelPlatforms:spawnplatform( 5,love.graphics.getHeight() - 200, 4, 1 )
+LevelPlatforms:spawnplatform( 300,love.graphics.getHeight() - 200, 8, 2 )
 end
 
 function love.update(dt)
@@ -33,6 +39,7 @@ function love.draw()
 	DB:draw()
 	Hero:draw()
 	PlayerCam:unset()
+	LevelPlatforms:draw()
 	love.graphics.draw(spr_mcursor_f1, msx - spr_mcursor_f1:getWidth()/2, msy - spr_mcursor_f1:getHeight()/2)
 end
 

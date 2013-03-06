@@ -24,7 +24,7 @@ function player:draw()
 	love.graphics.draw(spr_rogue,self.x,self.y)
 end
 
-function player:CollidingBlock()
+function player:collidingplatform()
 	
 end
 
