@@ -27,19 +27,19 @@ LevelPlatforms:spawnplatform( 300,love.graphics.getHeight() - 200, 8, 2 )
 end
 
 function love.update(dt)
+	Hero:collidingplatform()
 	Hero:control(dt)
 	PlayerCam:follow(Hero)
-	
 end
 
 function love.draw()
 	local msx, msy = love.mouse.getPosition()
+	LevelPlatforms:draw()
 	PlayerCam:set()
 	--love.graphics.draw(spr_skyback_f1, PlayerCam.x, PlayerCam.y)
 	DB:draw()
 	Hero:draw()
 	PlayerCam:unset()
-	LevelPlatforms:draw()
 	love.graphics.draw(spr_mcursor_f1, msx - spr_mcursor_f1:getWidth()/2, msy - spr_mcursor_f1:getHeight()/2)
 end
 

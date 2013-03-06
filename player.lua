@@ -25,7 +25,15 @@ function player:draw()
 end
 
 function player:collidingplatform()
-	
+	for i=1, #platforms do
+		local platW = platforms[i].blockColumns * platformBlockWidth
+		local platH = platforms[i].blockRows * platformBlockHeight
+		if CheckCollision(self.x,self.y,self.width,self.height, platforms[i].x,platforms[i].y,platW,platH) then 
+			self.y = self.y - 1
+			self.jump = not self.jump
+			self.yvel = 0 -- there is no more upwards velocity
+		end 
+	end 
 end
 
 function player:control(dt) 
@@ -34,7 +42,7 @@ function player:control(dt)
 	-- X Position Movement
 	self.xvel = self.xvel * (1 - math.min(dt*self.friction, 1)) 
 	self.x = self.x + self.xvel * (self.walkSpeed/40 * dt) --self.x = self.x + self.xvel
-
+	self.y = self.y + dt * 80
 	if love.keyboard.isDown("d") and 
 		self.xvel < 100 then 
 		self.xvel = self.xvel + self.walkSpeed*5 * dt
